@@ -1,6 +1,7 @@
 import React from "react";
 import './Navbar.css';
 import { FaLeaf } from "react-icons/fa";
+import Cartwidget from './Cartwidget';
 
 
 const Navbar = () => {
@@ -26,6 +27,7 @@ const Navbar = () => {
            Ubicación
         </p>
       </div>
+      <Cartwidget/>
       </nav>
   )
 }
