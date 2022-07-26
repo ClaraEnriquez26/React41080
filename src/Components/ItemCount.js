@@ -1,5 +1,8 @@
 
 import { useState } from 'react';
+import {
+    ContainerProduct
+} from './OtherStylesComponents'
 
 const ItemCount = ({
     id,
@@ -20,7 +23,7 @@ const ItemCount = ({
     }
 
     return (
-
+        <ContainerProduct>
             <div className="product-container">
                 <div className="product-image">
                     <img src={pictureUrl} alt={title}/>
@@ -35,6 +38,7 @@ const ItemCount = ({
                     <p>{price}</p>
                 </div>
             </div>
+        </ContainerProduct>
     );
 }
 
