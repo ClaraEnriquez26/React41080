@@ -1,24 +1,14 @@
 import ItemCount from "./ItemCount";
 import { ContainerProduct } from './OtherStylesComponents'
 
-const Item = ({ items = [], onAdd }) => {
+const Item = ({ price, title, stock, description, pictureUrl }) => {
     return (
         <ContainerProduct>
-        {
-            items.length > 0
-            ? items.map(item => 
-                <ItemCount 
-                 key={item.id}
-                 id={item.id}
-                 price={item.cost}
-                 pictureUrl={item.pictureUrl}
-                 stock={item.stock}
-                 onAdd={onAdd}
-                 title={item.title}
-                 description={item.description}
-                 />)
-            : <p>Cargando...</p>
-      }
+        <h1>{title}</h1>
+        <p>{description}</p>
+        <img src={pictureUrl} alt={title}/>
+        <p>{price}</p>
+        <ItemCount stock={stock}/>
       </ContainerProduct>
     )
   }

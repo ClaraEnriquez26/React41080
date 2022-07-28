@@ -1,7 +1,6 @@
-import ItemCount from './ItemCount';
 import ItemList from './ItemList'
 import { useEffect, useState } from "react";
-import fetchProducts from "../Utils/Fetch";
+import fetchProducts from '../Utils/Fetch';
 
 const ItemListContainer = ({ props, addToCart }) => {
   const [datos, setDatos] = useState([])
@@ -14,17 +13,15 @@ const ItemListContainer = ({ props, addToCart }) => {
       .catch(err => console.log(err))
   }, []);
 
-  const onAdd = (id, qty) => {
-    const product = datos.find(x => id === x.id)
-    console.info("Agregaste: " + product.title + " x " + qty + " items al carrito");
-    addToCart({product, qty})
-  }
+ // const onAdd = (id, qty) => {
+   //  const product = datos.find(x => id === x.id)
+    // console.info("Agregaste: " + product.title + " x " + qty + " items al carrito");
+   //  addToCart({product, qty})
+  // }
   
   return (
     <div className="titleIndex">
-      <ItemCount/>
-      <h4>{props.greetings}</h4>
-      <ItemList items={datos} onAdd={onAdd} />
+      <ItemList producto={datos} />
     </div>
   )
 }
