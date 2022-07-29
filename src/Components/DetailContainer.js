@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Fetch from "./Utils/Fetch";
 import ContainerProduct from "./Item";
+import ItemDetail from './ItemDetail';
 
 const DetailContainer = () => {
     const [dato, setDato] = useState({});
@@ -14,7 +15,10 @@ const DetailContainer = () => {
     }, []);
     
     return (
+        <div>
         <ContainerProduct item={dato} />
+        <ItemDetail/>
+        </div>
     );
 }
 
