@@ -9,6 +9,7 @@ const ItemDetail = ({producto}) => {
       return (
         <ContainerProduct>
         <div className='divDetailContainer'>
+          <p className='DetailTitle'>Detalle producto</p>
              <div className='imgDetailContainer'>
                  <img src={producto.pictureUrl}/>
              </div>
@@ -17,7 +18,7 @@ const ItemDetail = ({producto}) => {
                 <p className='descriptionProduct'>{producto.description}</p>
                 <span className='priceProduct'>{producto.price}</span>
                 <span>{producto.stock}</span>
-                <ItemCount addProducto={addProducto} stock={0}/>
+                <ItemCount addProducto={addProducto} stock={5}/>
              </div>
         </div>
         </ContainerProduct>
