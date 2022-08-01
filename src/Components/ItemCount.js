@@ -24,12 +24,12 @@ const ItemCount = ({
 
     return (
         <ContainerProduct>
-            <div className="product-container">
-                <div className="product-image">
+            <div className="productContainer">
+                <div className="productImage">
                     <img src={pictureUrl} alt={title}/>
                 </div>
-                <div className="product-info">
-                    <h6>{title}</h6>
+                <div className="productInfo">
+                    <p>{title}</p>
                     <p>{description}</p>
                     <p>{cantidad} artículos</p>
                     <button onClick={increment}>+</button>

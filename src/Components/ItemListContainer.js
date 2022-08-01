@@ -12,12 +12,6 @@ const ItemListContainer = ({ props, addToCart }) => {
       })
       .catch(err => console.log(err))
   }, []);
-
- // const onAdd = (id, qty) => {
-   //  const product = datos.find(x => id === x.id)
-    // console.info("Agregaste: " + product.title + " x " + qty + " items al carrito");
-   //  addToCart({product, qty})
-  // }
   
   return (
     <div className="titleIndex">

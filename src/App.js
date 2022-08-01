@@ -1,21 +1,23 @@
 import './App.css';
 import Navbar from './Components/Navbar';
 import ItemListContainer from './Components/ItemListContainer'
+import DetailContainer from './Components/DetailContainer'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from 'react';
 
-//const Cart = ({ cartItems = [] }) => {
- // console.info('Cart updated:', cartItems)
- // return (
- // <div className="App">
- //   <h1>Bienvenidos a</h1>
-    //<h2>VeganShop</h2>
-   // {cartItems.length > 0 && (cartItems.map(cartItem => (<div>
-   //   {cartItem.product.title + " x " + cartItem.qty}
-   // </div>)))
-   // }
-  //  <hr />
-  //</div>
-//)}
+const Cart = ({ cartItems = [] }) => {
+  console.info('Cart updated:', cartItems)
+  return (
+  <div className="App">
+    <h1>Bienvenidos a</h1>
+    <h2>VeganShop</h2>
+    {cartItems.length > 0 && (cartItems.map(cartItem => (<div>
+      {cartItem.product.title + " x " + cartItem.qty}
+    </div>)))
+    }
+  <hr />
+  </div>
+)}
 
 function App() {
   // [{ producto, qty },
@@ -37,8 +39,17 @@ function App() {
 
   return (
     <>
-      <Navbar />
-      <ItemListContainer/>
+    <Navbar />
+    <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<ItemListContainer greeting="Todos los productos" />}>
+          Bienvenidos a VeganShop
+          </Route>
+          <Route path="/detail/:productId" element={<DetailContainer />}>
+          Detalle del producto
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   );
   }

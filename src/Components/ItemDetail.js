@@ -1,23 +1,26 @@
 import ItemCount from './ItemCount'
+import { ContainerProduct } from './OtherStylesComponents';
 
 const ItemDetail = ({producto}) => {
       const addProducto = (cantidad) => {
-        alert (`Agregaste ${cantidad} producto al carrito`);
+        alert (`Agregaste ${cantidad} ${producto.title} producto al carrito`);
       };
 
       return (
-        <div className='DetailContainer'>
+        <ContainerProduct>
+        <div className='divDetailContainer'>
              <div className='imgDetailContainer'>
                  <img src={producto.pictureUrl}/>
              </div>
              <div>
-                <span>{producto.title}</span>
-                <p>{producto.description}</p>
-                <span>{producto.price}</span>
+                <span className="titleProduct">{producto.title}</span>
+                <p className='descriptionProduct'>{producto.description}</p>
+                <span className='priceProduct'>{producto.price}</span>
                 <span>{producto.stock}</span>
-                <ItemCount addProducto={addProducto} stock={5}/>
+                <ItemCount addProducto={addProducto} stock={0}/>
              </div>
         </div>
+        </ContainerProduct>
       )
     }
 
