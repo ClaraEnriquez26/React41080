@@ -2,6 +2,7 @@ import './App.css';
 import Navbar from './Components/Navbar';
 import ItemListContainer from './Components/ItemListContainer'
 import DetailContainer from './Components/DetailContainer'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const Cart = ({ cartItems = [] }) => {
   console.info('Cart updated:', cartItems)
@@ -37,9 +38,13 @@ function App() {
 
   return (
     <>
-    <Navbar />
-    <ItemListContainer/>
-    <DetailContainer/>
+    <BrowserRouter>
+      <Navbar />
+        <ItemListContainer/>
+          <Routes>
+            <Route path='/detail/:productId' element={<DetailContainer />} />
+          </Routes>
+    </BrowserRouter>
     </>
   );
   }
