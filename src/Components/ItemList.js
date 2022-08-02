@@ -1,9 +1,9 @@
 import Item from "./Item";
 
-const ItemList = ({ producto }) => {
+const ItemList = ({ products }) => {
     return (
         <ul className="itemList">
-        <Item products={producto} />
+        <Item products={products} />
         </ul>
     );
 }

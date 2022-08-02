@@ -6,14 +6,14 @@ import ItemDetail from './ItemDetail';
 
 
 const DetailContainer = () => {
-    const [data, setData] = useState();
+    const [products, setProducts] = useState();
     const [loading, setLoading] = useState(true);
     const params = useParams();
 
     useEffect(() => {
       getProductById(params.productId)
         .then((res) => {
-          setData(res);
+          setProducts(res);
           setLoading(false);
         })
         .catch((res) => {
@@ -25,7 +25,7 @@ const DetailContainer = () => {
     return (
         <div>
         <ContainerProduct />
-        <ItemDetail item={data}/>
+        <ItemDetail item={products}/>
         </div>
     );
     }

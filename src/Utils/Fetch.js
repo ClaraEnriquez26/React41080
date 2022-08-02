@@ -1,6 +1,6 @@
 let is_ok = true;
 
-const data = [
+const products = [
     {
       title: "Sal rosa de Himalaya",
       id: "1",
@@ -27,20 +27,26 @@ const data = [
     }
 ];
 
-const timeout = 2000;
-
-export const getProduct = () => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(data);
-    }, timeout);
-  });
-};
+export const getProduct =()=>{
+  return new Promise((resolve)=>{
+      setTimeout(()=>{
+          resolve(products)
+      }, 2000)
+  })
+}
 
 export const getProductById = (id) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(data.find(prod => prod.id == id));
-    }, timeout);
-  });
-};
+  return new Promise (resolve => {
+      setTimeout(() => {
+          resolve(products.find(prod => prod.id === id))
+      }, 500)
+  })
+}
+
+export const getProductsByCategory = (categoryId) => {
+  return new Promise (resolve => {
+      setTimeout(() => {
+          resolve(products.filter(prod => prod.category === categoryId))
+      }, 500)
+  })
+}

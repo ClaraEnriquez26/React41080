@@ -13,19 +13,11 @@ const Navbar = () => {
         </p>
       </div>
       <div className='boton'>
-        <p>
-           Inicio
-        </p>
-      </div>
-      <div className='boton'>
-        <p>
-           Contacto
-        </p>
-      </div>
-      <div className='boton'>
-        <p>
-           Ubicación
-        </p>
+        <ul>
+           <p>Inicio</p>
+           <p>Contacto</p>
+           <p>Ubicación</p>
+        </ul>
       </div>
       <Cartwidget/>
       </nav>

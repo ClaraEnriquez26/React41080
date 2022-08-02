@@ -1,25 +1,23 @@
 import ItemCount from "./ItemCount";
-import { ContainerProduct } from './OtherStylesComponents'
+import {Link} from 'react-router-dom';
 
-const Item = ({ producto }) => {
-  const handleClick = (description) => {
-    console.log(description)
-  }
+const Item = ({ id, title, pictureUrl, price, description, stock }) => {
 
-    return producto.map ((producto) => (
+    return (
       <>
-        <li key={producto.title}>
-          <img alt={producto.pictureUrl} className="Item__pictureUrl" src={producto.pictureUrl}></img>
+        <li key={title}>
+          <img alt={pictureUrl} className="Item__pictureUrl"></img>
             <div className="Item__div">
-              <span className="Item__description">{producto.description}</span>
-              <span className="Item__price">{producto.price}</span>
+              <span className="Item__description">{description}</span>
+              <span className="Item__price">${price}</span>
             </div>
-          <p className="Item__stock">{producto.stock}</p>
-         <button onClick={handleClick}>Detalle del producto</button>
+         <button>
+         <Link to={`/detail/${id}`} className='detail'>Ver detalle del producto</Link>
+         </button>
         <ItemCount stock={5}/>
         </li>
       </>
-     ));
+     );
   };
   
 export default Item;

@@ -7,9 +7,9 @@ const Cartwidget = ()  => {
         <>
          <div> 
          <Cart color='white'/>
-            <h6 className="numberCart">
+            <a className="numberCart">
               6
-            </h6>
+            </a>
          </div> 
          </>
     )
