@@ -2,8 +2,6 @@ import './App.css';
 import Navbar from './Components/Navbar';
 import ItemListContainer from './Components/ItemListContainer'
 import DetailContainer from './Components/DetailContainer'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from 'react';
 
 const Cart = ({ cartItems = [] }) => {
   console.info('Cart updated:', cartItems)
@@ -40,16 +38,8 @@ function App() {
   return (
     <>
     <Navbar />
-    <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<ItemListContainer greeting="Todos los productos" />}>
-          Bienvenidos a VeganShop
-          </Route>
-          <Route path="/detail/:productId" element={<DetailContainer />}>
-          Detalle del producto
-          </Route>
-        </Routes>
-      </BrowserRouter>
+    <ItemListContainer/>
+    <DetailContainer/>
     </>
   );
   }

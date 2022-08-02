@@ -1,23 +1,27 @@
 import ItemList from './ItemList'
 import { useEffect, useState } from "react";
-import fetchProducts from '../Utils/Fetch';
+import { getProduct } from '../Utils/Fetch';
 
-const ItemListContainer = ({ props, addToCart }) => {
-  const [datos, setDatos] = useState([])
+const ItemListContainer =  () => {
+  const [data, setData] = useState([])
+  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetchProducts()
-      .then(result => {
-        setDatos(result)
-      })
-      .catch(err => console.log(err))
-  }, []);
-  
+useEffect(() => {
+  getProduct().then(response => {
+    setData(response)
+  }).catch(error => {
+    console.log(error)
+  }).finally(() => {
+    setLoading(false)
+  });
+},[])
+
+  if (loading) {
   return (
     <div className="titleIndex">
-      <ItemList producto={datos} />
+      <ItemList producto={data} />
     </div>
-  )
-}
+  );
+}}
 
 export default ItemListContainer;

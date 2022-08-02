@@ -27,19 +27,20 @@ const data = [
     }
 ];
 
-const delayFetch = (time, task) => {
-    return new Promise((resolve, reject) => {
-        if (is_ok) {
-            setTimeout(() => {
-                resolve(task)
-            }, time);
-        } else {
-            reject("Error in the Fetch");
-        }
-    });
-}
+const timeout = 2000;
 
+export const getProduct = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(data);
+    }, timeout);
+  });
+};
 
-const fetchProducts = () => delayFetch(200, data)
-
-export default fetchProducts
+export const getProductById = (id) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(data.find(prod => prod.id == id));
+    }, timeout);
+  });
+};
