@@ -1,5 +1,4 @@
 import ItemCount from './ItemCount'
-import { ContainerProduct } from './OtherStylesComponents';
 
 const ItemDetail = ({ detail }) => {
       const addProducto = (cantidad) => {
@@ -11,7 +10,7 @@ const ItemDetail = ({ detail }) => {
         <div className='ItemDetail__Container'>
           <p className='ItemDetail__Title'>Detalle producto</p>
              <div className='ItemDetail__imgDetailContainer'>
-                 <img src={detail.pictureUrl}/>
+                 <img src={detail.pictureUrl} alt={detail.name}/>
              </div>
              <div>
                 <h4 className="ItemDetail__title">{detail.title}</h4>

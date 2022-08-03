@@ -4,19 +4,19 @@ import ItemListContainer from './Components/ItemListContainer'
 import DetailContainer from './Components/DetailContainer'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-const Cart = ({ cartItems = [] }) => {
-  console.info('Cart updated:', cartItems)
-  return (
-  <div className="App">
-    <h1>Bienvenidos a</h1>
-    <h2>VeganShop</h2>
-    {cartItems.length > 0 && (cartItems.map(cartItem => (<div>
-      {cartItem.product.title + " x " + cartItem.qty}
-    </div>)))
-    }
-  <hr />
-  </div>
-)}
+ // const Cart = ({ cartItems = [] }) => {
+  //  console.info('Cart updated:', cartItems)
+  //  return (
+  //  <div className="App">
+    //  <h1>Bienvenidos a</h1>
+   //   <h2>VeganShop</h2>
+    //  {cartItems.length > 0 && (cartItems.map(cartItem => (<div>
+    //    {cartItem.product.title + " x " + cartItem.qty}
+    //  </div>)))
+   //   }
+  //  <hr />
+  //  </div>
+ // )}
 
 function App() {
   // [{ producto, qty },
@@ -41,7 +41,7 @@ function App() {
     <BrowserRouter>
       <Navbar />
           <Routes>
-          <Route path='/category/:IndexId' element={<ItemListContainer greeting= {"Todos nuestros productos"} />} />
+          <Route path='/' element={<ItemListContainer greeting= {"Todos nuestros productos"} />} />
           <Route path='/category/:categoryId' element={<ItemListContainer greeting= {`Cargando productos`} />} />
           <Route path='/detail/:productId' element={<DetailContainer />} />
           </Routes>

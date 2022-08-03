@@ -48,7 +48,7 @@ const ItemListContainer =  (props) => {
 
   return (
     <div>
-      <p className="itemListContainer__title">Cargando {params.IndexId}</p>
+      <p className="itemListContainer__title">Cargando {params.indexId}</p>
     </div>
   );
 };
