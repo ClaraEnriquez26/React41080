@@ -8,11 +8,9 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <nav className='navbar'>
-      <div className='title'>
-        <p>
+      <Link to='/'>
           <FaLeaf/> VeganShop
-        </p>
-      </div>
+      </Link>
       <div className='Categorias'>
         <ul>
            <Link to='/category/Especias' className="Option">Especias</Link>
@@ -21,7 +19,7 @@ const Navbar = () => {
         </ul>
       </div>
       <Cartwidget/>
-      </nav>
+    </nav>
   )
 }
 

@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export const ContainerProduct = styled.div`
-  margin-left: 20px;
-  width: 400px;
+  background-color: black;
+  margin-left: 10px;
+  width: 300px;
   display: inline-block;
   text-align-last: center;
   img {
