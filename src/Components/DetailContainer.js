@@ -20,15 +20,18 @@ const DetailContainer = () => {
           console.log("Ocurrio un error");
         });
     }, [params]);
-
-  if (!loading) {
-    return (
+  
+    if (!loading) {
+      return (
         <div>
-        <ContainerProduct />
-        <ItemDetail item={products}/>
+          <ItemDetail detail={products} />
         </div>
-    );
+      );
+
     }
-  }
+    return <div>
+      <p className="DetailContainer__title">Cargando detalle..</p>
+    </div>;
+  };
 
 export default DetailContainer;

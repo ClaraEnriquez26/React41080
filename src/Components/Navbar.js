@@ -2,6 +2,7 @@ import React from "react";
 import './Navbar.css';
 import { FaLeaf } from "react-icons/fa";
 import Cartwidget from './Cartwidget';
+import { Link } from "react-router-dom";
 
 
 const Navbar = () => {
@@ -12,11 +13,11 @@ const Navbar = () => {
           <FaLeaf/> VeganShop
         </p>
       </div>
-      <div className='boton'>
+      <div className='Categorias'>
         <ul>
-           <p>Inicio</p>
-           <p>Contacto</p>
-           <p>Ubicación</p>
+           <Link to='/category/Especias' className="Option">Especias</Link>
+           <Link to='/category/Legumbres' className="Option">Legumbres</Link>
+           <Link to='/category/Pastas' className="Option">Pastas</Link>
         </ul>
       </div>
       <Cartwidget/>

@@ -1,27 +1,56 @@
 import ItemList from './ItemList'
 import { useEffect, useState } from "react";
-import { getProduct } from '../Utils/Fetch';
+import { getProducts, getProductsByCategory } from '../Utils/Fetch';
+import { useParams } from "react-router-dom";
 
-const ItemListContainer =  () => {
-  const [data, setData] = useState([])
+const ItemListContainer =  (props) => {
+  const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true);
+  const params = useParams();
 
-useEffect(() => {
-  getProduct().then(response => {
-    setData(response)
-  }).catch(error => {
-    console.log(error)
-  }).finally(() => {
-    setLoading(false)
-  });
-},[])
+  useEffect(() => {
+    setLoading(true);
+    if (params.categoryId) {
+      getProductsByCategory(params.categoryId)
+        .then((response) => {
+          setProducts(response);
+        })
+        .catch((reject) => {
+          console.log(`Ocurrio un error ${reject}`);
+        })
+        .finally((response) => {
+          setLoading(false);
+        });
+    } 
+    
+     else {
+      getProducts()
+        .then((response) => {
+          setProducts(response);
+        })
+        .catch((reject) => {
+          console.log(`Ocurrio un error ${reject}`);
+        })
+        .finally((response) => {
+          setLoading(false);
+        });
+    }
+  }, [params.categoryId]);
 
-  if (loading) {
+  if (!loading) {
+    return (
+      <div>
+        <p className="itemListContainer__title">{props.greeting}</p>
+        <ItemList products={products} />
+      </div>
+    );
+  }
+
   return (
-    <div className="titleIndex">
-      <ItemList producto={data} />
+    <div>
+      <p className="itemListContainer__title">Cargando {params.IndexId}</p>
     </div>
   );
-}}
+};
 
 export default ItemListContainer;
