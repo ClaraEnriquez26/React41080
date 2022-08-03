@@ -13,6 +13,9 @@ const ItemDetail = ({ detail }) => {
                  <img src={detail.pictureUrl} alt={detail.name}/>
              </div>
              <div>
+                <p className="Info">
+                    Categoría: {category}
+                </p>
                 <h4 className="ItemDetail__title">{detail.title}</h4>
                 <p className='ItemDetail__description'>{detail.description}</p>
                 <span className='ItemDetail__price'>{detail.price}</span>
