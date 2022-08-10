@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { getProductById } from "../Utils/Fetch";
-import ContainerProduct from "./Item";
 import ItemDetail from './ItemDetail';
 
 
-const DetailContainer = () => {
+const DetailContainer = (addItem) => {
     const [products, setProducts] = useState();
     const [loading, setLoading] = useState(true);
     const params = useParams();
@@ -24,7 +23,7 @@ const DetailContainer = () => {
     if (!loading) {
       return (
         <div>
-          <ItemDetail detail={products} />
+          <ItemDetail detail={products} addItem={addItem}/>
         </div>
       );
 

@@ -1,13 +1,19 @@
 import ItemCount from './ItemCount';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import './ItemDetail.css';
+import { Context } from '../Context.js/cartContext';
 
-const ItemDetail = ({ detail }) => {
+const ItemDetail = ({ id, title, pictureUrl, description, price, stock }) => {
   const [cantidad, setCantidad] = useState(0)
+  
+  const { addItem, getProductCantidad } = useContext(Context)
+  const CantidadAdded = getProductCantidad(id)
 
-  const addProducto = (cantidad) => {
+  const handleOnAdd = (cantidad) => {
       console.log('agregue al carrito: ', cantidad)
       setCantidad(cantidad)
+      addItem({id, title, price, cantidad})
   }
 
       return (
@@ -15,15 +21,16 @@ const ItemDetail = ({ detail }) => {
         <div className='ItemDetail__Container'>
           <p className='ItemDetail__Title'>Detalle producto</p>
              <div className='ItemDetail__imgDetailContainer'>
-                 <img src={detail.pictureUrl} alt={detail.name}/>
+                 <img src={pictureUrl} alt='picture'/>
              </div>
              <div>
-                <h4 className="ItemDetail__title">{detail.title}</h4>
-                <p className='ItemDetail__description'>{detail.description}</p>
-                <span className='ItemDetail__price'>{detail.price}</span>
+                <h4 className="ItemDetail__title">{title}</h4>
+                <p className='ItemDetail__description'>{description}</p>
+                <span className='ItemDetail__price'>{price}</span>
                 <div>
-                { cantidad > 0 ? <Link className='link_carrito' to='/cart'>Ir al carrito</Link> 
-                :<ItemCount initial={1} stock={detail.stock} addProducto={addProducto}/> }
+                {cantidad > 0 ? <Link className='FinalizarLaCompra' to='/cart'>Finalizar Compra</Link> 
+                : <ItemCount stock={stock} onAdd={handleOnAdd} initial={CantidadAdded}/>}
+                {/*<ItemCount initial={0} stock={stock} onAdd={handleOnAdd}/>*/}
                 </div>
              </div>
         </div>

@@ -3,6 +3,8 @@ import Navbar from './Components/Navbar';
 import ItemListContainer from './Components/ItemListContainer'
 import DetailContainer from './Components/DetailContainer'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ContextProvider } from './Context.js/cartContext'
+import { UserContextProvider } from './Context.js/userContext';
 
  // const Cart = ({ cartItems = [] }) => {
   //  console.info('Cart updated:', cartItems)
@@ -18,11 +20,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
   //  </div>
  // )}
 
-function App() {
-  // [{ producto, qty },
- // const [cart, updateCart] = useState([])
+  function App() {
 
- // const addToCart = ({product, qty}) => {
+ // const [cart, updateCart] = useState([])
+// const addToCart = ({product, qty}) => {
    // const newCartItem = { product, qty };
    // const cartItem = cart.find(x => x.product.id === product.id)
 
@@ -36,16 +37,22 @@ function App() {
    // updateCart([...cartWithItem, cartItem])
   //}
 
+
   return (
     <>
+    <UserContextProvider>
+    <ContextProvider>
     <BrowserRouter>
       <Navbar />
           <Routes>
           <Route path='/' element={<ItemListContainer greeting= {"Todos nuestros productos"} />} />
           <Route path='/category/:categoryId' element={<ItemListContainer greeting= {`Cargando productos`} />} />
-          <Route path='/detail/:productId' element={<DetailContainer />} />
+          <Route path='/detail/:productId' element={<DetailContainer/>} />
+          <Route path='/cart' element={<h4>CART</h4>} />
           </Routes>
     </BrowserRouter>
+    </ContextProvider>
+    </UserContextProvider>
     </>
   );
   }

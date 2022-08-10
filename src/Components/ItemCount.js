@@ -3,13 +3,14 @@ import { useState } from 'react';
 import {
     ContainerProduct
 } from './OtherStylesComponents'
+import Cartwidget from './Cartwidget';
 
 const ItemCount = ({
-    id,
     title,
     price,
     pictureUrl,
     description,
+    stock,
     onAdd
 }, initial) => {
     const [cantidad, setCantidad] = useState(0);
@@ -34,7 +35,8 @@ const ItemCount = ({
                     <p>{cantidad} artículos</p>
                     <button onClick={increment}>+</button>
                     <button onClick={decrement}>-</button>
-                    <button onClick={() => onAdd(id, Number(cantidad))}>Agregar al carrito</button>
+                    <button disabled={stock === 0 ? true : null} 
+                    onClick={() => onAdd(cantidad)} className='cart_btn'>Agregar al <Cartwidget/></button>
                     <p>{price}</p>
                 </div>
             </div>
