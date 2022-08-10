@@ -3,10 +3,10 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 import { Cart } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
-import { Context } from '../Context.js/cartContext';
+import { CartContext } from '../Context.js/CartContext';
 
 const Cartwidget = ()  => {
-  const { getCantidad } = useContext(Context)
+  const { getCantidad } = useContext(CartContext)
     const cantidad = getCantidad()
 
     return (

@@ -3,8 +3,8 @@ import Navbar from './Components/Navbar';
 import ItemListContainer from './Components/ItemListContainer'
 import DetailContainer from './Components/DetailContainer'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { ContextProvider } from './Context.js/cartContext'
-import { UserContextProvider } from './Context.js/userContext';
+import { CartContextProvider } from './Context.js/CartContext'
+import { UserContextProvider } from './Context.js/UserContext';
 
  // const Cart = ({ cartItems = [] }) => {
   //  console.info('Cart updated:', cartItems)
@@ -41,7 +41,7 @@ import { UserContextProvider } from './Context.js/userContext';
   return (
     <>
     <UserContextProvider>
-    <ContextProvider>
+    <CartContextProvider>
     <BrowserRouter>
       <Navbar />
           <Routes>
@@ -51,7 +51,7 @@ import { UserContextProvider } from './Context.js/userContext';
           <Route path='/cart' element={<h4>CART</h4>} />
           </Routes>
     </BrowserRouter>
-    </ContextProvider>
+    </CartContextProvider>
     </UserContextProvider>
     </>
   );
