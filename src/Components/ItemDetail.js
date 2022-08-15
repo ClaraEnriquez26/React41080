@@ -2,18 +2,18 @@ import ItemCount from './ItemCount';
 import { Link } from 'react-router-dom';
 import { useState, useContext } from 'react';
 import './ItemDetail.css';
-import { CartContext } from '../Context.js/CartContext';
+import { CartContext } from '../Context/CartContext';
 
 const ItemDetail = ({ id, title, pictureUrl, description, price, stock }) => {
-  const [cantidad, setCantidad] = useState(0)
   
-  const { addItem, getProductCantidad } = useContext(CartContext)
-  //const CantidadAdded = getProductCantidad(id)
+  const [quantity, setQuantity] = useState(0)
+  const { addItem, getProductQuantity } = useContext(CartContext)
+  const QuantityAdded = getProductQuantity(id)
 
-  const handleOnAdd = (cantidad) => {
-      console.log('agregue al carrito: ', cantidad)
-      setCantidad(cantidad)
-      addItem({id, title, price, cantidad})
+  const handleOnAdd = (quantity) => {
+      console.log('agregue al carrito: ', quantity)
+      setQuantity(quantity)
+      addItem({id, title, price, quantity})
   }
 
       return (
@@ -28,7 +28,7 @@ const ItemDetail = ({ id, title, pictureUrl, description, price, stock }) => {
                 <p className='ItemDetail__description'>{description}</p>
                 <span className='ItemDetail__price'>{price}</span>
                 <div>
-                {cantidad > 0 ? <Link className='FinalizarLaCompra' to='/cart'>Finalizar Compra</Link> 
+                {quantity > 0 ? <Link className='FinalizarLaCompra' to='/cart'>Finalizar Compra</Link> 
                 : <ItemCount initial={0} stock={stock} onAdd={handleOnAdd}/>}
                 </div>
              </div>

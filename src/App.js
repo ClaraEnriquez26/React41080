@@ -3,8 +3,8 @@ import Navbar from './Components/Navbar';
 import ItemListContainer from './Components/ItemListContainer'
 import DetailContainer from './Components/DetailContainer'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { CartContextProvider } from './Context.js/CartContext'
-import { UserContextProvider } from './Context.js/UserContext';
+import { CartContextProvider } from './Context/CartContext';
+import { UserContextProvider } from './Context/UserContext';
 
  // const Cart = ({ cartItems = [] }) => {
   //  console.info('Cart updated:', cartItems)
