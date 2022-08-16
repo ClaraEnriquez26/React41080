@@ -10,14 +10,14 @@ const DetailCart = ({ id, quantity, title, price }) => {
     }
 
     return (
-        <article className='CardCartItem'>
+        <article>
             <header>
                 <h2 className="TitleDetail">
                     {title}
                 </h2>
             </header>
-            <section className='QuantityDetail'>
-                <p className="InfoCartItem">
+            <section className='QuantityContainer'>
+                <p className="QuantityDetail">
                     Cantidad: {quantity}
                 </p>
                 <p className='PriceDetail'>
@@ -28,7 +28,7 @@ const DetailCart = ({ id, quantity, title, price }) => {
                  <p className="SubtotalDetail">
                      Subtotal: ${price * quantity}
                  </p>
-                 <button className='ButtonCartItem' onClick={() => handleRemove(id)}>X</button>
+                 <button className='ButtonDetailCart' onClick={() => handleRemove(id)}>X</button>
             </footer>
         </article>
     )
