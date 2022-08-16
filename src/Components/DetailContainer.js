@@ -4,7 +4,7 @@ import { getProductById } from "../Utils/Fetch";
 import ItemDetail from './ItemDetail';
 
 
-const DetailContainer = (addItem) => {
+const DetailContainer = () => {
     const [products, setProducts] = useState();
     const [loading, setLoading] = useState(true);
     const params = useParams();
@@ -23,7 +23,7 @@ const DetailContainer = (addItem) => {
     if (!loading) {
       return (
         <div>
-          <ItemDetail detail={products} addItem={addItem}/>
+          <ItemDetail {...products}/>
         </div>
       );
 
