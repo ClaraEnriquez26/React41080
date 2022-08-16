@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import { CartContext } from '../Context/CartContext'
+import './DetailCart.css'
 
 
 const DetailCart = ({ id, quantity, title, price }) => {
@@ -12,16 +13,16 @@ const DetailCart = ({ id, quantity, title, price }) => {
     return (
         <article>
             <header>
-                <h2 className="TitleDetail">
+                <h5 className="TitleDetail">
                     {title}
-                </h2>
+                </h5>
             </header>
             <section className='QuantityContainer'>
-                <p className="QuantityDetail">
+                <p>
                     Cantidad: {quantity}
                 </p>
-                <p className='PriceDetail'>
-                    Precio: ${price}
+                <p>
+                    Precio: {price}
                 </p>
             </section>           
             <footer>

@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { CartContext } from '../Context/CartContext';
 import DetailCart from './DetailCart';
 import Cart from './Cart';
+import './CartContainer.css'
 
 
 const CartContainer = () => {
@@ -12,7 +13,7 @@ const CartContainer = () => {
 
     if(totalQuantity === 0) {
         return (
-            <h1>Total de productos</h1>
+            <h1 className="ButtonTotalProductos">Total de productos</h1>
         )
     }
 
@@ -22,9 +23,9 @@ const CartContainer = () => {
                 <Cart products={cart}/>
             </div>
             { cart.map(p => <DetailCart key={p.id} {...p}/>) }
-            <h3>Total: ${total}</h3>
-            <button onClick={() => clearCart()} className="Button">Eliminar productos</button>
-            <button className="Button">Abonar</button>
+            <h3 className="ButtonTotal">Total: ${total}</h3>
+            <button onClick={() => clearCart()} className="ButtonCartContainerOne">Eliminar productos</button>
+            <button className="ButtonCartContainerTwo">Abonar</button>
 
         </div>
     )
