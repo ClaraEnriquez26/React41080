@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 // import { getProductById } from "../Utils/Fetch";
 import ItemDetail from './ItemDetail';
-import { getDocs, doc} from 'firebase/firestore'
+import { getDoc, doc} from 'firebase/firestore'
 import { db } from '../Firebase/Index.js/Index'
 
 
@@ -13,7 +13,7 @@ const DetailContainer = () => {
     const { productId } = useParams()
 
     useEffect(() => {
-      getDocs(doc(db, 'products', productId)).then (response => {
+      getDoc(doc(db, 'products', productId)).then (response => {
           const values = response.data()
           const product = {id: response.id, ... values}
           setProducts(product)

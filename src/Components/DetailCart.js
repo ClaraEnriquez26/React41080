@@ -29,7 +29,7 @@ const DetailCart = ({ id, quantity, title, price }) => {
                  <p className="SubtotalDetail">
                      Subtotal: ${price * quantity}
                  </p>
-                 <button className='ButtonDetailCart' onClick={() => handleRemove(id)}>X</button>
+                 <button className='ButtonDetailCart' onClick={() => handleRemove(id)}>x</button>
             </footer>
         </article>
     )
