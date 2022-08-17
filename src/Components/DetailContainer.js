@@ -1,24 +1,28 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { getProductById } from "../Utils/Fetch";
+// import { getProductById } from "../Utils/Fetch";
 import ItemDetail from './ItemDetail';
+import { getDocs, doc} from 'firebase/firestore'
+import { db } from '../Firebase/Index.js/Index'
 
 
 const DetailContainer = () => {
     const [products, setProducts] = useState();
     const [loading, setLoading] = useState(true);
-    const params = useParams();
+    
+    const { productId } = useParams()
 
     useEffect(() => {
-      getProductById(params.productId)
-        .then((res) => {
-          setProducts(res);
-          setLoading(false);
-        })
-        .catch((res) => {
-          console.log("Ocurrio un error");
-        });
-    }, [params]);
+      getDocs(doc(db, 'products', productId)).then (response => {
+          const values = response.data()
+          const product = {id: response.id, ... values}
+          setProducts(product)
+      }).catch(error => {
+          console.log(error)
+      }).finally(() => {
+          setLoading(false)
+      })
+  }, [productId])
   
     if (!loading) {
       return (
