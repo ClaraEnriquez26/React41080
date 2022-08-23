@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 // import { getProductById } from "../Utils/Fetch";
 import ItemDetail from './ItemDetail';
 import { getDoc, doc} from 'firebase/firestore'
-import { db } from '../Firebase/Index.js/Index'
+import { db } from '../Firebase/Index/Index'
 
 
 const DetailContainer = () => {
