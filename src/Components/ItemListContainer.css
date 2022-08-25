@@ -1,6 +1,16 @@
 .TitleIlc {
-    font-weight: bold;
+    font-family: 'bebas neue';
+    font-size: 1.5rem;
+    padding-left: 37rem;
+    padding-top: 15px;
+    color: rgb(1, 157, 113);
+  }
+
+.Ilc {
+    font-family: 'bebas neue';
     font-size: 1.5rem;
     background-color: var(--color-nav-btn);
-    padding-left: 35rem;
-  }
+    padding-left: 40rem;
+    padding-top: 15px;
+    color: rgb(1, 157, 113);
+}

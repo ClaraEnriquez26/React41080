@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import ItemDetail from './ItemDetail';
 import { getDoc, doc} from 'firebase/firestore'
 import { db } from '../Firebase/Index/Index'
+import './DetailContainer.css'
 
 
 const DetailContainer = () => {
@@ -33,7 +34,7 @@ const DetailContainer = () => {
 
     }
     return <div>
-      <p className="DetailContainer__title">Cargando detalle..</p>
+      <p className="DetailContainerTitle">Cargando detalle..</p>
     </div>;
   };
 
