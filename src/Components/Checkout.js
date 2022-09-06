@@ -3,6 +3,9 @@ import { useState } from "react";
 import { CartContext } from "../Context/CartContext";
 import { addDoc, collection, Timestamp, getDocs, query, documentId, where, writeBatch} from 'firebase/firestore';
 import { db } from '../Firebase/Index/Index'
+import './Checkout.css'
+import { FaLeaf } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 
 const Checkout = () => {
@@ -28,8 +31,8 @@ const Checkout = () => {
                     phone: phone,
                     email: mail,
                 },
-                items: cart,
-                total: `${total}`,
+                items: cart, 
+                otal: `${total}`,
                 date: Timestamp.fromDate (new Date())
             }
 
@@ -47,13 +50,13 @@ const Checkout = () => {
                 const stockDb = infoDoc.stock
 
                 const productAdded = cart.find ( prod => prod.id === doc.id )
-                const prodQ = productAdded?.quantity
+                const prodQuantity = productAdded?.quantity
 
                 console.log (productAdded);
-                console.log (prodQ);
+                console.log (prodQuantity);
 
-                if (stockDb >= prodQ) {
-                    batch.update (doc.ref, {stock: stockDb - prodQ})
+                if (stockDb >= prodQuantity) {
+                    batch.update (doc.ref, {stock: stockDb - prodQuantity})
                 } else {
                     noStock.push ({ id: doc.id, ...infoDoc })
                 }
@@ -64,36 +67,48 @@ const Checkout = () => {
                 const orderRef = collection (db, 'orders')
                 const orderCreated = await addDoc (orderRef, detailOrder)
                 batch.commit ()
-                console.log (orderCreated.id);
+                const OrderN = orderCreated.id
                 clearCart ()
-                setOrderNumber (orderCreated.id);
+                setOrderNumber (OrderN.id);
                 purchasedOrder (1)
             } else {
-                console.log ('No hay disponibilidad de este producto')
-            }
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops... Something went wrong!',
+                    text: 'One of the items you are trying to buy is out of stock',
+                  })
+              }
         } catch (error) {
             console.log (error);
         } finally {
-            console.log ('No se puede realizar esta funcion')
+            console.log ('No se puede realizar esta funcion');
       }
     }
 
 
     return (
-        <div>
-            <h4> VeganShop </h4>
+        <div className="backgroundCheckout">
+            <h4 className="LogoCheckout"> <FaLeaf className="LogoCheckout"/> VeganShop </h4>
             <form>
-                <label> Nombre:
-                    <input type = "text" onChange = {(e) => {setName (e.target.value);}} />    
+            <div className="ContainerCheckout">
+                <div>
+                <label> Nombre  
+                    <input type = "text" onChange = {(e) => {setName (e.target.value);}} className='inputCheckout'/>    
                 </label>
-                <label> Email:
-                    <input type = "text" onChange = {(e) => {setMail (e.target.value);}} />
+                </div>
+                <div>
+                <label> Email  
+                    <input type = "text" onChange = {(e) => {setMail (e.target.value);}} className='inputCheckout2'/>
                 </label>
-                <label> Telefono:
-                    <input type = "number" onChange = {(e) => {setPhone (e.target.value); }} />
+                </div>
+                <div>
+                <label> Telefono  
+                    <input type = "number" onChange = {(e) => {setPhone (e.target.value); }} className='inputCheckout3'/>
                 </label>
+                </div>
+                </div>
             </form>
-            <button type = "submit" onClick = {makeOrder}> Enviar </button>
+            <button type = "submit" onClick = {makeOrder} className='buttonCheckout'> Enviar </button>
         </div>
     )
 }
