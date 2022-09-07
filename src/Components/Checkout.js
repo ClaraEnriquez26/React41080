@@ -5,14 +5,15 @@ import { addDoc, collection, Timestamp, getDocs, query, documentId, where, write
 import { db } from '../Firebase/Index/Index'
 import './Checkout.css'
 import { FaLeaf } from "react-icons/fa";
-import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 
 const Checkout = () => {
-    const [ order, purchasedOrder ] = useState (0)
-    const { cart, clearCart, total } = useContext (CartContext)
+    const [ order, setOrder ] = useState (0)
+    const { cart, clearCart, getTotal } = useContext (CartContext)
     const [ orderNumber, setOrderNumber, name, setName, mail, setMail ] = useState ("");
-    const [ phone, setPhone ] = useState (0);
+    const [ phone, setPhone ] = useState ("");
 
     if (order === 1) {
         return (
@@ -23,16 +24,17 @@ const Checkout = () => {
         )
     }
 
-    const makeOrder = async () => {
+    const makeOrder = async (e) => {
         try {
+
             const detailOrder = {
                 buyer: {
-                    name: name,
-                    phone: phone,
-                    email: mail,
+                    name:  `${name}`,
+                    phone: {phone},
+                    email:  `${mail}`,
                 },
                 items: cart, 
-                otal: `${total}`,
+                total: `${getTotal}`,
                 date: Timestamp.fromDate (new Date())
             }
 
@@ -70,13 +72,13 @@ const Checkout = () => {
                 const OrderN = orderCreated.id
                 clearCart ()
                 setOrderNumber (OrderN.id);
-                purchasedOrder (1)
+                setOrder (1)
             } else {
                 Swal.fire({
                     icon: 'error',
-                    title: 'Oops... Something went wrong!',
-                    text: 'One of the items you are trying to buy is out of stock',
-                  })
+                    title: 'Oops... Algo salió mal :(',
+                    text: 'Uno de los prodcutos que intenta comprar está fuera de stock',
+                    })
               }
         } catch (error) {
             console.log (error);
@@ -107,8 +109,8 @@ const Checkout = () => {
                 </label>
                 </div>
                 </div>
+                <Link to='/' type="submit" onClick = {makeOrder} className='buttonCheckout'> Enviar </Link>
             </form>
-            <button type = "submit" onClick = {makeOrder} className='buttonCheckout'> Enviar </button>
         </div>
     )
 }
